@@ -94,12 +94,11 @@ do_build()
         make O=$BUSYBOX_OUT_DIR ARCH=arm64 install
     else
         if [[ ! ${ARCH+x} ]]; then
-            # use ARCH=arm64
             CROSS_COMPILE_DIR=$(dirname $CROSS_COMPILE)
             PATH="$PATH:$CROSS_COMPILE_DIR"
         fi
-        make O=$BUSYBOX_OUT_DIR -j $PARALLELISM  ARCH=$ARCH CROSS_COMPILE=$TOP_DIR/$GCC
-        make O=$BUSYBOX_OUT_DIR ARCH=$ARCH CROSS_COMPILE=$TOP_DIR/$GCC install
+        make O=$BUSYBOX_OUT_DIR -j $PARALLELISM  ARCH=$ARCH CROSS_COMPILE=$CROSS_COMPILE
+        make O=$BUSYBOX_OUT_DIR ARCH=$ARCH CROSS_COMPILE=$CROSS_COMPILE install
     fi
     popd
 
