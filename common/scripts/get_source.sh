@@ -191,7 +191,9 @@ get_bbr_acs_src()
    if [ -z $ARM_BBR_TAG ]; then
        #No TAG is provided. Download the latest code
        echo "Downloading Arm BBR source code."
-       git clone  --depth 1 https://github.com/ARM-software/bbr-acs.git bbr-acs
+       echo "                BBR source code from etienne-lms (P-R in bbr-acs/git)"
+       #git clone  --depth 1 https://github.com/ARM-software/bbr-acs.git bbr-acs
+       git clone -b arm32_support https://github.com/etienne-lms/bbr-acs.git bbr-acs
    else
        echo "Downloading Arm BBR source code. TAG: $ARM_BBR_TAG"
        git clone  --depth 1 --branch $ARM_BBR_TAG https://github.com/ARM-software/bbr-acs.git bbr-acs
