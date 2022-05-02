@@ -258,6 +258,7 @@ prepare_disk_image ()
     rm -f RESULT
 
     echo "Compressing the image : $PLATDIR/$IMG_BB"
+    rm -f $PLATDIR/$IMG_BB.xz
     xz -z $PLATDIR/$IMG_BB
 
     if [ -f $PLATDIR/$IMG_BB.xz ]; then
