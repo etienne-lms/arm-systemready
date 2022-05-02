@@ -139,7 +139,7 @@ get_grub_src()
     git clone https://git.savannah.gnu.org/git/grub.git
     pushd $TOP_DIR/grub
     git submodule update --init
-    if [[ $arch = "arm" ]]; then
+    if [[ $ARCH = "arm" ]]; then
         if patch -R -p0 -s -f --dry-run < $TOP_DIR/../../common/patches/0001-GRUB-correct-detection-of-DDR-RAM-address.patch; then
             patch  -R -p0  < $TOP_DIR/../../common/patches/0001-GRUB-correct-detection-of-DDR-RAM-address.patch
         fi
@@ -174,7 +174,7 @@ get_linux-acs_src()
       echo "Downloading Arm Linux ACS source code. TAG : ${ARM_LINUX_ACS_TAG}"
       git clone --depth 1 --branch ${ARM_LINUX_ACS_TAG} https://gitlab.arm.com/linux-arm/linux-acs linux-acs
   fi
-  if [[ $arch = "aarch64" ]]; then
+  if [[ $ARCH = "aarch64" ]]; then
     pushd $TOP_DIR/linux-${LINUX_KERNEL_VERSION}
 
     #The same patch is applicable BSA and SBSA
