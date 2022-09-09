@@ -92,6 +92,12 @@ fi
 mkdir -p /mnt/acs_results/linux_dump
 lspci -vvv &> /mnt/acs_results/linux_dump/lspci.log
 
+
+if [ ! -x /bin/fwts ]; then
+ echo "/bin/fwts not found, drop FWTS tests and run shell"
+ exec sh
+fi
+
 mkdir -p /mnt/acs_results/fwts
 
 #Check for the existense of fwts test configuration file in the package. EBBR Execution
